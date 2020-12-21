@@ -1,3 +1,7 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /cineland
+    controller: App\Controller\FilmController::index
+
+film :
+    resource: routes/film/films.yaml
+    prefix: /film
