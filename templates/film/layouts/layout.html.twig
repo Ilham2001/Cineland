@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>
+            {% block title %}
+
+            {% endblock %}
+        </h1>
+        <div id="contenu" >
+            {% block body %}
+                <div>
+                    <hr>Accueil<hr />
+                </div>
+            {% endblock %}
+        </div>
+        <hr />
+
+        <div id="pied_de_page" >
+            <p>&copy; Ilham.</p>
+        </div>
+    </body>
+</html>

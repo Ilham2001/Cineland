@@ -19,13 +19,12 @@ class Film
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $titre;
 
     /**
      * @ORM\Column(type="time")
-     * @Assert\Unique
      */
     private $duree;
 

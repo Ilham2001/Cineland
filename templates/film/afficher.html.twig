@@ -1,0 +1,30 @@
+{% extends 'film/layouts/layout.html.twig' %}
+
+{% block title %}{{ film.titre }} {% endblock %}
+
+{% block body %}
+
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Durée</th>
+                <th>Date de sortie</th>
+                <th>Note</th>
+                <th>Age minimal</th>
+            </tr>
+        </thead>
+        <tbody> 
+            <tr>
+                <td>{{ film.titre }}</td>
+                <td>{{ film.duree ? film.duree|date('H:i:s') }}</td>
+                <td>{{ film.dateSortie ? film.dateSortie|date('m/d/Y') }}</td>
+                <td>{{ film.note }}</td>
+                <td>{{ film.ageMinimal }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

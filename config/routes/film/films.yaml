@@ -1,3 +1,6 @@
 film_accueil :
     path: /accueil
     controller : App\Controller\FilmController::accueil
+film_afficher :
+    path: /afficher/{id}
+    controller: App\Controller\FilmController::afficher
