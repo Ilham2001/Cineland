@@ -26,5 +26,11 @@
             </tr>
         </tbody>
     </table>
+    <div>
+        <a href="{{ path('film_modifier', { 'id': film.id }) }}">Modifier le film</a>
+    </div>
+    <div>
+        <a href="{{ path('film_supprimer', { 'id': film.id }) }}">Supprimer le film</a>
+    </div>
 </div>
 {% endblock %}

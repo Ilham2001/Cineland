@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FilmRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -46,6 +48,16 @@ class Film
      * @Assert\Positive
      */
     private $ageMinimal;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Acteur::class)
+     */
+    private $acteur;
+
+    public function __construct()
+    {
+        $this->acteur = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -108,6 +120,30 @@ class Film
     public function setAgeMinimal(int $ageMinimal): self
     {
         $this->ageMinimal = $ageMinimal;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Acteur[]
+     */
+    public function getActeur(): Collection
+    {
+        return $this->acteur;
+    }
+
+    public function addActeur(Acteur $acteur): self
+    {
+        if (!$this->acteur->contains($acteur)) {
+            $this->acteur[] = $acteur;
+        }
+
+        return $this;
+    }
+
+    public function removeActeur(Acteur $acteur): self
+    {
+        $this->acteur->removeElement($acteur);
 
         return $this;
     }
