@@ -1,7 +1,15 @@
-index:
+cineland:
     path: /cineland
     controller: App\Controller\FilmController::index
 
 film :
     resource: routes/film/films.yaml
     prefix: /film
+
+acteur :
+    resource: routes/acteur/acteurs.yaml
+    prefix: /acteur
+
+genre : 
+    resource: routes/genre/genres.yaml
+    prefix: /genre

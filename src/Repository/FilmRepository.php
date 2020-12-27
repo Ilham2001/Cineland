@@ -22,29 +22,26 @@ class FilmRepository extends ServiceEntityRepository
     // /**
     //  * @return Film[] Returns an array of Film objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findByStartAndEndDate($from, $to)
     {
         return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
+            ->where('f.dateSortie BETWEEN :from AND :to')
+            ->setParameter('from', $from)
+            ->setParameter('to',$to)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
+    
 
-    /*
-    public function findOneBySomeField($value): ?Film
+    
+    public function findByBeforeDate($before)
     {
         return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
+            ->where('f.dateSortie <= :before')
+            ->setParameter('before', $before)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();
     }
-    */
+    
 }

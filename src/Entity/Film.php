@@ -38,8 +38,8 @@ class Film
 
     /**
      * @ORM\Column(type="float")
-     * @Assert\GreaterThan(0)
-     * @Assert\LessThan(20)
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\LessThanOrEqual(20)
      */
     private $note;
 

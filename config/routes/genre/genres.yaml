@@ -1,0 +1,12 @@
+genre_accueil :
+    path: /accueil
+    controller : App\Controller\GenreController::accueil
+
+genre_ajouter :
+    path: /ajouter
+    controller : App\Controller\GenreController::ajouter
+
+genre_supprimer :
+    path: /supprimer/{id}
+    controller : App\Controller\GenreController::supprimer
+

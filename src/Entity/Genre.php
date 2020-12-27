@@ -27,7 +27,7 @@ class Genre
     /**
      * @ORM\OneToMany(targetEntity=Film::class, mappedBy="genre")
      */
-    private $films;
+    public $films;
 
     public function __construct()
     {

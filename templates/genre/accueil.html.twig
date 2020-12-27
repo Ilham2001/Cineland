@@ -1,0 +1,23 @@
+{% extends 'layouts/layoutgeneral.html.twig' %}
+
+{% block title %}Accueil genre{% endblock %}
+
+{% block body %}
+<a href="{{ path('genre_ajouter') }}"> Ajouter  </a>
+    <table class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Genre</th>
+                <th>Action</th>       
+            </tr>
+        </thead>
+        <tbody>
+        {% for genre in genres %}
+            <tr>
+                <td>{{ genre.nom }}</td>
+                <td><a href="{{ path('genre_supprimer', { 'id': genre.id }) }}"> <i class="fas fa-trash-alt"></i> </a></td>
+            </tr>
+        {% endfor %} 
+        </tbody>
+    </table>
+{% endblock %}

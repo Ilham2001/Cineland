@@ -18,6 +18,11 @@ film_modifier_suite :
     path: /modifier_suite/{id}
     controller: App\Controller\FilmController::modifierSuite
     methods: POST
+
 film_supprimer : 
     path: /supprimer/{id}
     controller: App\Controller\FilmController::supprimer
+
+film_filtre : 
+    path: /filtre
+    controller: App\Controller\FilmController:filtre
