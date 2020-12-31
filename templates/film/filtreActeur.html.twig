@@ -1,0 +1,63 @@
+{% extends 'layouts/layoutgeneral.html.twig' %}
+
+{% block title %}Accueil film{% endblock %}
+
+{% block body %}
+    {% include 'film/navbar.html.twig' %}
+<div>
+    <div>
+        {{ form_start(myform) }}
+        <b>{{ form_errors(myform) }}</b>
+        <table>
+            <tr>
+                <td>{{ form_row(myform.acteur) }}</td>
+                <td>{{ form_row(myform.submit) }}</td>
+            </tr>
+        </table>
+        {{ form_end(myform) }}
+    </div>
+
+    <table id="full-table" class="table table-striped table-bordered" style="width:100%;" style="display: block;">
+        <thead>
+            <tr>
+                <th>Titre du film</th>
+                <th>Durée</th>      
+            </tr>
+        </thead>
+        <tbody>
+        {% for film in films %}
+            <tr>
+                <td>{{ film.titre }}</td>
+                <td>{{ film.duree }}</td>
+            </tr>
+        {% endfor %} 
+        </tbody>
+    </table>
+
+</div>
+<a class="btn btn-primary" href="{{ path('film_ajouter') }}">
+  Nouveau film
+</a>
+<div>
+
+<div class="modal fade" id="details-film" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ajout d'un nouveau film</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                   
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary">Ajouter</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

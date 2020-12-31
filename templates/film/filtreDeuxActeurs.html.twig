@@ -11,7 +11,8 @@
         {{ form_errors(myform) }}
         <table>
             <tr>
-                <td>{{ form_row(myform.titre) }}</td>
+                <td>{{ form_row(myform.acteur1) }}</td>
+                <td>{{ form_row(myform.acteur2) }}</td>
                 <td>{{ form_row(myform.submit) }}</td>
             </tr>
         </table>
@@ -36,7 +37,6 @@
                 <td>
                     <a href="{{ path('film_modifier', { 'id': film.id }) }}"><i class="fas fa-pen"></i></a>
                     <a href="#" data-toggle="modal" data-target="#details-film"><i class="fas fa-eye"></i></a>
-                    <a href="#" data-toggle="modal" data-target=""><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
         {% endfor %} 
@@ -47,4 +47,26 @@
 <a class="btn btn-primary" href="{{ path('film_ajouter') }}">
   Nouveau film
 </a>
+<div>
+
+<div class="modal fade" id="details-film" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ajout d'un nouveau film</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                   
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary">Ajouter</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

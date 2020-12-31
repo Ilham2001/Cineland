@@ -1,22 +1,152 @@
-{{ form_start(myform) }}
-<b>{{ form_errors(myform) }}</b>
-<table>
-    <tr>
-        <td>{{ form_row(myform.dateDepart) }}</td>
-        <td>{{ form_row(myform.dateArrivee) }}</td>
-        <td>{{ form_row(myform.submit) }}</td>
-    </tr>
-</table>
-{{ form_end(myform) }}
+<!DOCTYPE html>
+<html>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="{{ path('cineland') }}">Films entre deux dates</a>
+                    <a class="nav-link active"   href="{{ path('film_accueil') }}">Films avant date</a>
+                    <a class="nav-link active" aria-current="page" href="{{ path('acteur_accueil') }}">Films d'un acteur</a>
+                    <a class="nav-link active" aria-current="page" href="{{ path('genre_accueil') }}">Moyenne des durées des films</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="form-group">
+        <label for="type_demand">Type de recherche</label>
+        <!-- DEMAND TYPES : CHOICES -->
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="type_choice" value="titre" onclick="show4();" checked="checked">
+            <label class="form-check-label">Par titre de film</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="type_choice" value="deux-dates" onclick="show1();">
+            <label class="form-check-label">Par deux date</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="type_choice" value="date-anterieure" onclick="show2();">
+            <label class="form-check-label">Par date antiérieure</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="type_choice" value="acteur" onclick="show3();">
+            <label class="form-check-label">Par acteur</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="type_choice" value="genre" onclick="show5();">
+            <label class="form-check-label">Par genre</label>
+        </div>
+    </div>
+    <!-- form -->
+    <div id="form" style="display: block;">
+        {{ form_start(myform) }}
+        <b>{{ form_errors(myform) }}</b>
+        <table>
+            <tr>
+                <td>{{ form_row(myform.dateDepart) }}</td>
+                <td>{{ form_row(myform.dateArrivee) }}</td>
+                <td onclick="hideDureeTable();">{{ form_row(myform.submit) }}</td>
+            </tr>
+        </table>
+        {{ form_end(myform) }}
+    </div>
+    <!-- form1 -->
+    <div id="form1" style="display: none;">
+        {{ form_start(myform1) }}
+        {{ form_errors(myform1) }}
+        <table>
+            <tr>
+                <td>{{ form_row(myform1.dateAvant) }}</td>
+                <td onclick="hideDureeTable();" >{{ form_row(myform1.submit) }}</td>
+            </tr>
+        </table>
+        {{ form_end(myform1) }}
+    </div>
 
-<p> recherche par date antérieure </p>
+    <!-- acteur form -->
+    <div id="acteur" style="display: none;">
+        {{ form_start(myform2) }}
+        {{ form_errors(myform2) }}
+        <table>
+            <tr>
+                <td>{{ form_row(myform2.acteur) }}</td>
+                <td onclick="showDureeTable();">{{ form_row(myform2.submit) }}</td>
+            </tr>
+        </table>
+        {{ form_end(myform2) }}
+    </div>
+    <!-- titre form -->
+    <div id="titre" style="display: none;">
+        {{ form_start(myform3) }}
+        {{ form_errors(myform3) }}
+        <table>
+            <tr>
+                <td>{{ form_row(myform3.titre) }}</td>
+                <td onclick="show4();">{{ form_row(myform3.submit) }}</td>
+            </tr>
+        </table>
+        {{ form_end(myform3) }}
+    </div>
 
-{{ form_start(myform1) }}
-{{ form_errors(myform1) }}
-<table>
-    <tr>
-        <td>{{ form_row(myform1.dateAvant) }}</td>
-        <td>{{ form_row(myform1.submit) }}</td>
-    </tr>
-</table>
-{{ form_end(myform1) }}
+    <!-- genre form -->
+    <div id="genre" style="display: none;">
+        {{ form_start(myform4) }}
+        {{ form_errors(myform4) }}
+        <table>
+            <tr>
+                <td>{{ form_row(myform4.genre) }}</td>
+                <td onclick="show5();">{{ form_row(myform4.submit) }}</td>
+            </tr>
+        </table>
+        {{ form_end(myform4) }}
+    </div>
+
+<!-- JS -->
+<script type="text/javascript">
+		function show1(){
+  			document.getElementById('form').style.display ='block';
+  			document.getElementById('form1').style.display = 'none';
+            document.getElementById('acteur').style.display = 'none';
+            document.getElementById('titre').style.display = 'none';
+            document.getElementById('genre').style.display = 'none';
+		}
+		function show2(){
+            document.getElementById('form').style.display ='none';
+  			document.getElementById('form1').style.display = 'block';
+            document.getElementById('acteur').style.display = 'none';
+            document.getElementById('titre').style.display = 'none';
+            document.getElementById('genre').style.display = 'none';
+        }
+        function show3(){
+            document.getElementById('form').style.display ='none';
+  			document.getElementById('form1').style.display = 'none';
+            document.getElementById('acteur').style.display = 'block';
+            document.getElementById('titre').style.display = 'none';
+            document.getElementById('genre').style.display = 'none';
+        }
+        function show4(){
+            document.getElementById('form').style.display ='none';
+  			document.getElementById('form1').style.display = 'none';
+            document.getElementById('acteur').style.display = 'none';
+            document.getElementById('titre').style.display = 'block';
+            document.getElementById('genre').style.display = 'none';
+        }
+        function show5(){
+            document.getElementById('form').style.display ='none';
+  			document.getElementById('form1').style.display = 'none';
+            document.getElementById('acteur').style.display = 'none';
+            document.getElementById('titre').style.display = 'none';
+            document.getElementById('genre').style.display = 'block';
+        }
+
+        function showDureeTable(){
+            document.getElementById('full-table').style.display ='none';
+  			document.getElementById('duree-table').style.display = 'block';
+        }
+
+        function hideDureeTable(){
+            document.getElementById('full-table').style.display ='block';
+  			document.getElementById('duree-table').style.display = 'none';
+        }
+	</script>
+</html>

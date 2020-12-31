@@ -11,7 +11,7 @@ class FilmType extends AbstractType {
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('titre', TextType::class)
-                ->add('duree', TimeType::class)
+                ->add('duree', TextType::class)
                 ->add('dateSortie', BirthdayType::class)
                 ->add('note', TextType::class)
                 ->add('ageMinimal', TextType::class);

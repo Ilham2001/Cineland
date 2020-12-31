@@ -26,7 +26,7 @@ class Film
     private $titre;
 
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="integer")
      */
     private $duree;
 
@@ -82,7 +82,7 @@ class Film
         return $this;
     }
 
-    public function getDuree(): ?\DateTimeInterface
+    public function getDuree(): ?int
     {
         return $this->duree;
     }
@@ -129,6 +129,12 @@ class Film
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getTitre();
+    }
+
 
     /**
      * @return Collection|Acteur[]

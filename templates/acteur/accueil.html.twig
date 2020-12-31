@@ -3,29 +3,25 @@
 {% block title %}Accueil acteur{% endblock %}
 
 {% block body %}
-<div> Zone filtre </div>
+<div> {% include '/acteur/filtre.html.twig' %} </div>
     <table class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nom et prenom</th>
                 <th>Date de naissance</th>
                 <th>Nationalité</th>
-                <th>Films joués</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
+        {% for acteur in acteurs %}
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href=""><i class="fa fa-edit" style="font-size:26px"></i></a>
-                <a href=""><i style="font-size:26px;color:red" class='material-icons'>delete</i></a>
-                </td>
+                <td>{{ acteur.nomPrenom }}</td>
+                <td>{{ acteur.dateNaissance ? acteur.dateNaissance|date('m/d/Y') }}</td>
+                <td>{{ acteur.nationalite }}</td>
+                <td><a href="#" data-toggle="modal" data-target="#details-film"><i class="fas fa-eye"></i></a></td>
             </tr>
+        {% endfor %} 
         </tbody>
     </table>
 {% endblock %}

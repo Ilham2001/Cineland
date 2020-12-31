@@ -33,8 +33,6 @@ class FilmRepository extends ServiceEntityRepository
             ->getResult();
     }
     
-
-    
     public function findByBeforeDate($before)
     {
         return $this->createQueryBuilder('f')
@@ -43,5 +41,45 @@ class FilmRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findByActeur($acteur)
+    {
+        return $this->createQueryBuilder('f')
+            ->join('f.acteurs', 'a', 'WITH', 'a.nomPrenom = :acteur')
+            ->setParameter('acteur', $acteur)
+            ->getQuery()
+            ->getResult();
+    }
     
+    public function findByTitle($film_titre)
+    {
+        return $this->createQueryBuilder('f')
+            ->where('f.titre LIKE :film_titre')
+            ->setParameter('film_titre', '%'.$film_titre.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByGenre($genre)
+    {
+        return $this->createQueryBuilder('f')
+            ->join('f.genre', 'g', 'WITH', 'g.nom = :genre')
+            ->setParameter('genre', $genre)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByTwoActors($acteur1, $acteur2) {
+        return $this->createQueryBuilder('f')
+            ->join('f.acteurs', 'a', 'WITH', 'a.nomPrenom = :acteur1')
+            ->andWhere('f.acteurs', 'a', 'WITH', 'a.nomPrenom = :acteur2')
+            ->setParameter('acteur1',$acteur1)
+            ->setParameter('acteur2', $acteur2)
+            ->getQuery()
+            ->getResult();
+            
+        //return $this->createQueryBuilder('f')
+        
+
+    }
 }

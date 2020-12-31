@@ -22,29 +22,24 @@ class ActeurRepository extends ServiceEntityRepository
     // /**
     //  * @return Acteur[] Returns an array of Acteur objects
     //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Acteur
+    public function findByName($acteur_name)
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
+            ->where('a.nomPrenom LIKE :acteur_name')
+            ->setParameter('acteur_name', '%'.$acteur_name.'%')
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();
     }
-    */
+
+    
+    public function findByFilm($titre)
+    {
+        return $this->createQueryBuilder('a')
+            ->join('a.films', 'f', 'WITH', 'f.titre= :titre')
+            ->setParameter('titre', $titre)
+            ->getQuery()
+            ->getResult();
+    }
+    
 }

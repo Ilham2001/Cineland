@@ -1,0 +1,24 @@
+{% extends 'layouts/layoutgeneral.html.twig' %}
+
+{% block title %}Accueil film{% endblock %}
+
+{% block body %}
+    {% include 'film/navbar.html.twig' %}
+
+    <div>
+        {{ form_start(myform) }}
+        <b>{{ form_errors(myform) }}</b>
+        <table>
+            <tr>
+                <td>{{ form_row(myform.genre) }}</td>
+                <td>{{ form_row(myform.submit) }}</td>
+            </tr>
+        </table>
+        {{ form_end(myform) }}
+    </div>
+
+    <div>
+        <div> Moyenne : {{ moyenne }} </div>
+    </div>
+
+{% endblock %}

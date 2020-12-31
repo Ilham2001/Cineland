@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <h2>Ajouter un film</h2>
-            {% include "film/formulaire.html.twig" %}
-    </body>
-</html>
+{% extends 'layouts/layoutgeneral.html.twig' %}
+
+{% block title %}Ajouter un film{% endblock %}
+
+{% block body %}
+    {% include "film/formulaire.html.twig" %}
+{% endblock %}

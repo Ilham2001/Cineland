@@ -23,6 +23,22 @@ film_supprimer :
     path: /supprimer/{id}
     controller: App\Controller\FilmController::supprimer
 
-film_filtre : 
-    path: /filtre
-    controller: App\Controller\FilmController:filtre
+film_filtre_dates : 
+    path: /filtre_dates
+    controller: App\Controller\FilmController:filtreDates
+
+film_filtre_dateAnterieure : 
+    path: /filtre_dateAnterieure
+    controller: App\Controller\FilmController:filtreDateAnterieure
+
+film_filtre_acteur : 
+    path: /filtre_acteur
+    controller: App\Controller\FilmController:filtreActeur
+
+film_filtre_acteurs : 
+    path: /filtre_acteurs
+    controller: App\Controller\FilmController:filtreDeuxActeurs
+
+film_filtre_genre : 
+    path: /filtre_genre
+    controller: App\Controller\FilmController:filtreGenre
